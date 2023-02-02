@@ -1,5 +1,5 @@
 <<question
- swapping of two number without using third variables.
+ 3.a)swapping of two number without using third variables.
 question
 #!/bin/sh
 echo Enter two numbers-:

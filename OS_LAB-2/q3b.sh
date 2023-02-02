@@ -1,5 +1,5 @@
 <<question
- swapping of two number with using third variables.
+ 3.b)swapping of two number with using third variables.
 question
 #!/bin/sh
 echo "Enter first number(A) Of Your Choice :"

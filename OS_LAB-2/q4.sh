@@ -1,5 +1,5 @@
 <<question
-Take the marks of 5 subjects as input and find average percentage
+4.Take the marks of 5 subjects as input and find average percentage
 question
 #!/bin/sh
 echo "Enter the marks of five subjects of any students :"
