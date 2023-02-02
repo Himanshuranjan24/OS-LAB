@@ -1,5 +1,5 @@
 <<question
-Take the input in sec and display the time in hrs,min,sec format
+2.Take the input in sec and display the time in hrs,min,sec format
 question
 #!/bin/bash
 echo "Enter time in seconds:"
