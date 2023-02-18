@@ -9,7 +9,7 @@ numdigits=${#number}
 sum=0
 for ((i=0; i<$numdigits; i++)); do
     digit=${number:i:1}
-    (( sum += digit**num_digits ))
+    (( sum += digit**numdigits ))
 done
 case $number in
     $sum) echo "$number is an Armstrong number.";;
