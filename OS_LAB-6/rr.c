@@ -1,6 +1,5 @@
 /*c program for rr scheduling.*/
 #include <stdio.h>
-
 struct process {
     int pid;
     int arrival_time;
@@ -9,7 +8,6 @@ struct process {
     int turnaround_time;
     int remaining_time;
 };
-
 void rr_scheduling(struct process p[], int n, int quantum) {
     int i, current_time = 0, completed_jobs = 0;
     float avg_waiting_time = 0, avg_turnaround_time = 0;
@@ -37,7 +35,6 @@ void rr_scheduling(struct process p[], int n, int quantum) {
     printf("Average waiting time: %f\n", avg_waiting_time);
     printf("Average turnaround time: %f\n", avg_turnaround_time);
 }
-
 int main() {
     struct process p[] = {{1, 0, 10}, {2, 5, 5}, {3, 6, 2}};
     int n = sizeof(p)/sizeof(p[0]);
