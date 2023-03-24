@@ -1,6 +1,5 @@
 /*c program for fcfs scheduling.*/
 #include <stdio.h>
-
 struct process {
     int pid;
     int arrival_time;
