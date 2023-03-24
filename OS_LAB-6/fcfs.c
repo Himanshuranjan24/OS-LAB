@@ -1,32 +1,36 @@
-/*C program for fcfs scheduling.*/
+/*c program for fcfs scheduling.*/
 #include <stdio.h>
+
+struct process {
+    int pid;
+    int arrival_time;
+    int burst_time;
+    int waiting_time;
+    int turnaround_time;
+};
+void fcfs_scheduling(struct process p[], int n) {
+    int i;
+    float avg_waiting_time = 0, avg_turnaround_time = 0;
+    int current_time = 0;
+    for(i=0; i<n; i++) {
+        if(p[i].arrival_time > current_time) {
+            current_time = p[i].arrival_time;
+        }
+        p[i].waiting_time = current_time - p[i].arrival_time;
+        p[i].turnaround_time = p[i].waiting_time + p[i].burst_time;
+        current_time += p[i].burst_time;
+        avg_waiting_time += p[i].waiting_time;
+        avg_turnaround_time += p[i].turnaround_time;
+        printf("Process %d: waiting time=%d, turnaround time=%d\n", p[i].pid, p[i].waiting_time, p[i].turnaround_time);
+    }
+    avg_waiting_time /= n;
+    avg_turnaround_time /= n;
+    printf("Average waiting time: %f\n", avg_waiting_time);
+    printf("Average turnaround time: %f\n", avg_turnaround_time);
+}
 int main() {
-   int n, bt[20], wt[20], tat[20], i, j;
-   printf("Enter the number of processes: ");
-   scanf("%d", &n);
-   printf("Enter the burst time for each process:\n");
-   for(i = 0; i < n; i++) {
-      printf("Process %d: ", i+1);
-      scanf("%d", &bt[i]);
-   }
-   wt[0] = 0;
-   for(i = 1; i < n; i++) {
-      wt[i] = 0;
-      for(j = 0; j < i; j++)
-         wt[i] += bt[j];
-   }
-   for(i = 0; i < n; i++)
-      tat[i] = bt[i] + wt[i];
-   float avg_wt = 0, avg_tat = 0;
-   for(i = 0; i < n; i++) {
-      avg_wt += wt[i];
-      avg_tat += tat[i];
-   }
-   avg_wt /= n;
-   avg_tat /= n;
-   printf("Process\tBurst Time\tWaiting Time\tTurnaround Time\n");
-   for(i = 0; i < n; i++)
-      printf("%d\t%d\t\t%d\t\t%d\n", i+1, bt[i], wt[i], tat[i]);
-   printf("Average Waiting Time: %.2f\nAverage Turnaround Time: %.2f", avg_wt, avg_tat);
-   return 0;
+    struct process p[] = {{1, 0, 10}, {2, 5, 5}, {3, 6, 2}};
+    int n = sizeof(p)/sizeof(p[0]);
+    fcfs_scheduling(p, n);
+    return 0;
 }
